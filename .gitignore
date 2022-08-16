@@ -1,0 +1,33 @@
+# Don't check auto-generated stuff into git
+coverage/lcov-report/*
+coverage/clover.xml
+coverage/coverage-final.json
+junit.xml
+build
+node_modules
+stats.json
+cypress
+cypress/videos
+cypress/plugins
+cypress/support
+cypress/screenshots
+*.xml
+.scannerwork
+packages/*
+
+# Cruft
+.DS_Store
+npm-debug.log
+.idea
+
+# log files
+*.log
+
+# config
+#app/config.js
+
+# VS Code
+.vscode
+
+#internals
+#server
