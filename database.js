@@ -2,7 +2,7 @@ import mongoose from 'mongoose';
 
 async function init() {
     try {
-        const connectionString = 'mongodb://localhost:27017/testdb';
+        const connectionString = 'mongodb://127.0.0.1:27017/testdb';
         await mongoose.connect(connectionString);
         console.log(`Connected successfully to :${connectionString}`);
 

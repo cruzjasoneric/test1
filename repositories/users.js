@@ -7,7 +7,7 @@ const User = mongoose.model('User', userSchema);
 export function getUserByUsername(name) {
     const pattern = new RegExp(`${name}`);
     return new Promise((resolve, reject) => {
-        User.findOne({ username: { $regex: pattern, $options: 'gi' } })
+        User.findOne({ username: { $regex: pattern, $options: 'i' } })
             .then((result) => {
                 resolve(result);
             })

@@ -51,17 +51,24 @@ router.post('/changePassword', async (req, res, next) => {
 });
 
 router.post('/signup', async (req, res, next) => {
-    const existing = await getUserByUsername(req.body.username);
-    if (!req.body.password || req.body.password.length < 5) {
-        const err = new Error('Password too short');
-        next(err);
-    }
+    try {
+        const existing = await getUserByUsername(req.body.username);
+        if (!req.body.password || req.body.password.length < 5) {
+            const err = new Error('Password too short');
+            err.status = 400;
 
-    if (existing && existing.length > 0) {
-        const err = new Error('Username already taken');
-        next(err);
-    } else {
-        res.send(await createUser(req.body));
+            throw err;
+
+        }
+    
+        if (existing) {
+            throw new Error('Username already taken');
+        } else {
+            res.send(await createUser(req.body));
+        }
+    } catch (e) {
+        next(e);
     }
+        
 
 });
