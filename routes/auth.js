@@ -34,6 +34,7 @@ router.post('/logout', async (req, res, next) => {
 });
 
 router.post('/changePassword', async (req, res, next) => {
+    // test
     await delay(1600);
     const user = await getUserByUsername(req.body.username);
 
